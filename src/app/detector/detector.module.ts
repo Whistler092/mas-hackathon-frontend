@@ -4,6 +4,6 @@ import { RecorderComponent } from './components/recorder/recorder.component';
 
 @NgModule({
   declarations: [RecorderComponent],
-  imports: [CommonModule],
+  imports: [CommonModule, RecorderComponent],
 })
 export class DetectorModule {}
