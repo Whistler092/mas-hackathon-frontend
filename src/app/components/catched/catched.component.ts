@@ -13,7 +13,7 @@ export class CatchedComponent implements OnInit {
 
   ngOnInit(): void {
     this.signalrService.startConnection();
-    this.signalrService.addTransferChartDatalistener(
+    this.signalrService.addTransferDatalistener(
       this.processResponse.bind(this)
     );
   }

@@ -11,6 +11,7 @@ export class SignalRService {
   public startConnection() {
     this.hubConnection = new signalR.HubConnectionBuilder()
       .withUrl('https://middleware-mask-api.azurewebsites.net/mainHub')
+      .configureLogging(signalR.LogLevel.Information)
       .build();
     this.hubConnection
       .start()
@@ -18,7 +19,7 @@ export class SignalRService {
       .catch((err) => console.log('Error while starting conection: ', err));
   }
 
-  public addTransferChartDatalistener(callBack) {
+  public addTransferDatalistener(callBack) {
     this.hubConnection.on('BroadcastData', (data) => {
       this.data = data;
       callBack(this.data);
