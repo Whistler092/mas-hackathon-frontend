@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
 })
 export class RecordService {
   private subject = new Subject();
-  private baseUrl = 'http://64.225.8.39/api/';
+  private baseUrl = 'https://middleware-mask-api.azurewebsites.net/api/';
   constructor(private httpClient: HttpClient) {}
 
   sendImageToBacked(image) {
