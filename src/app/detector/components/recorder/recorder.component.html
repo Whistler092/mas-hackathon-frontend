@@ -1,8 +1,9 @@
 <video id="video" #video width="720" height="560" autoplay muted></video>
 <canvas #canvas id="canvas" width="640" height="480"></canvas>
 <button (click)="stop()">stop</button>
+<button (click)="restart()">restart</button>
 <ul>
-  <li *ngFor="let item of captures">
-    <img src="{{ item }}" height="50" />
+  <li *ngFor="let a of [i, 2, 4]">
+    {{ a }}
   </li>
 </ul>

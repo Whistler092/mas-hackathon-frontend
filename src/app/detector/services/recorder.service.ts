@@ -13,7 +13,7 @@ export class RecordService {
     // return this.httpClient.post(`testurl`, { image: image });
 
     setTimeout(() => {
-      this.subject.next('image sent......');
+      this.subject.next('sending image to back..........');
     }, 2000);
     return this.subject;
   }
