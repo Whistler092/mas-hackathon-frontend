@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "mas-hackathon-frontend"
+    }
+  },
+  "defaultProject": "mas-hackathon-frontend",
+  "cli": {
+    "analytics": false
+  }
 }
