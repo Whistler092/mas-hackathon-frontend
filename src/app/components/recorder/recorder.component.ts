@@ -88,6 +88,7 @@ export class RecorderComponent implements OnInit, OnDestroy {
     this.busy = true;
     this.recordServide.sendImageToBacked(image).subscribe((res) => {
       this.busy = false;
+      console.log('response from Back.....', res);
     });
   }
 

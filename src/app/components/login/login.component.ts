@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   login() {
+    sessionStorage.setItem('logged', '1');
     this.router.navigate([this.routes[this.profile]]);
     console.log(this.profile);
   }

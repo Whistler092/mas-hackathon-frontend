@@ -7,14 +7,15 @@ import { Subject } from 'rxjs';
 })
 export class RecordService {
   private subject = new Subject();
+  private baseUrl = 'http://64.225.8.39/api/';
   constructor(private httpClient: HttpClient) {}
 
   sendImageToBacked(image) {
-    // return this.httpClient.post(`testurl`, { image: image });
+    return this.httpClient.post(`${this.baseUrl}Main/start`, { image: image });
 
-    setTimeout(() => {
+    /*setTimeout(() => {
       this.subject.next('sending image to back..........');
     }, 2000);
-    return this.subject;
+    return this.subject;*/
   }
 }
