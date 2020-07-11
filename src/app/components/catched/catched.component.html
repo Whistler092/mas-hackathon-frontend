@@ -1,4 +1,5 @@
 <h1>Wall of the shame</h1>
+<button (click)="receivedData = []">Clear</button>
 <ul>
   <li *ngFor="let person of receivedData">
     <img alt="catched" src="{{ person }}" />

@@ -92,6 +92,13 @@ export class RecorderComponent implements OnInit, OnDestroy {
     });
   }
 
+  takePicture() {
+    this.canvas.nativeElement
+      .getContext('2d')
+      .drawImage(this.video.nativeElement, 0, 0, 640, 480);
+    this.sendImageToBackend(this.canvas.nativeElement.toDataURL('image/png'));
+  }
+
   compareImages(imageToCompare) {
     if (this.captures.length) {
       resemble(this.captures[0])
