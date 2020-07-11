@@ -10,7 +10,7 @@ export class SignalRService {
 
   public startConnection() {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('https://localhost:1234')
+      .withUrl('http://64.225.8.39/mainHub')
       .build();
     this.hubConnection
       .start()
@@ -19,7 +19,7 @@ export class SignalRService {
   }
 
   public addTransferChartDatalistener(callBack) {
-    this.hubConnection.on('transferedData', (data) => {
+    this.hubConnection.on('BroadcastData', (data) => {
       this.data = data;
       callBack(this.data);
       console.log('received data');
