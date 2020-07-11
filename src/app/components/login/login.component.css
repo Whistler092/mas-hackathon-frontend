@@ -1,0 +1,15 @@
+.color-bg {
+  text-align: center;
+  position: relative;
+}
+.color-bg img {
+  width: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 25%;
+}
+
+.login-container {
+  padding-top: 50px;
+}

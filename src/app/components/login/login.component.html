@@ -1,8 +1,39 @@
-<div>
-  please choose a profile...
+<div class="row login-container">
+  <div class="col col-sm-6 color-bg">
+    <img src="../assets/images/washing_hands.png" />
+  </div>
+  <div class="col col-sm-6">
+    <div class="col align-self-center">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Survilance</h5>
+          <p class="card-text">
+            Module to capture video
+          </p>
+          <a [routerLink]="['/recorder']" class="btn btn-primary color-bg"
+            >Take me there</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="col align-self-center mt-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Wall of shame</h5>
+          <p class="card-text">
+            Module to view who is not wearing a facemask
+          </p>
+          <a [routerLink]="['/receptor']" class="btn btn-primary color-bg"
+            >Take me there</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<h2>Please choose a profile...</h2>
   <select [(ngModel)]="profile">
     <option value="0">survilance</option>
     <option value="1">Wall of shame</option>
   </select>
-  <button (click)="login()">Login</button>
-</div>
+  <button (click)="login()">Login</button>-->
