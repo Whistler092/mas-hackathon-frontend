@@ -12,10 +12,5 @@ export class RecordService {
 
   sendImageToBacked(image) {
     return this.httpClient.post(`${this.baseUrl}Main/start`, { image: image });
-
-    /*setTimeout(() => {
-      this.subject.next('sending image to back..........');
-    }, 2000);
-    return this.subject;*/
   }
 }
