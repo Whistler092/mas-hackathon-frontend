@@ -10,7 +10,10 @@ import { MessagingService } from '../../services/messaging.service';
 export class CatchedComponent implements OnInit {
   public catched = [1, 2, 3, 4, 5];
   public receivedData = [];
-  constructor(private signalrService: SignalRService, private messagingService: MessagingService) { }
+  constructor(
+    private signalrService: SignalRService,
+    private messagingService: MessagingService
+  ) {}
 
   ngOnInit(): void {
     this.initializeConnection();

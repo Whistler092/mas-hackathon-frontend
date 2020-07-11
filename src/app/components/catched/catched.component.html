@@ -1,7 +1,12 @@
-<h1>Wall of the shame</h1>
+<div class="row">
+  <div class="col-sm-12">
+    <img src="../assets/images/banner2.png" />
+  </div>
+</div>
+
 <button (click)="receivedData = []">Clear</button>
-<ul>
-  <li *ngFor="let person of receivedData">
-    <img alt="catched" src="{{ person }}" />
-  </li>
-</ul>
+<div class="row images-container">
+  <div class="col col-sm-4" *ngFor="let person of receivedData">
+    <img alt="catched" class="rounded img-thumbnail" src="{{ person }}" />
+  </div>
+</div>
