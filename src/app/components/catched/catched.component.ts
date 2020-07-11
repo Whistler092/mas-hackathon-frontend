@@ -11,14 +11,17 @@ export class CatchedComponent implements OnInit {
   public receivedData = [];
   constructor(private signalrService: SignalRService) {}
 
-  ngOnInit(): void {
-    this.signalrService.startConnection();
-    this.signalrService.addTransferDatalistener(
-      this.processResponse.bind(this)
-    );
+  ngOnInit(): void {}
+
+  async initializeConnection() {
+    this.signalrService.createConnection();
+    await this.signalrService.startConnection();
+    this.signalrService.addConnectionListeners(this.processResponse.bind(this));
   }
 
   processResponse(receivedData) {
+    console.log('received on component');
+
     this.receivedData.push(receivedData);
   }
 }
