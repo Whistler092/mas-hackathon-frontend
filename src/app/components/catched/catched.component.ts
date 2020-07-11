@@ -24,6 +24,6 @@ export class CatchedComponent implements OnInit {
   processResponse(receivedData) {
     console.log('received on component');
 
-    this.receivedData.push(receivedData);
+    this.receivedData.unshift(receivedData);
   }
 }
