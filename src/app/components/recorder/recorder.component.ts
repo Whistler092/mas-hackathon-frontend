@@ -98,7 +98,7 @@ export class RecorderComponent implements OnInit, OnDestroy {
         .compareTo(imageToCompare)
         .onComplete((data) => {
           console.log('---------comparison data----------', data);
-          if (data.rawMisMatchPercentage >= 50) {
+          if (data.rawMisMatchPercentage >= 30) {
             this.captures[0] = imageToCompare;
             this.sendImageToBackend(imageToCompare);
           }
