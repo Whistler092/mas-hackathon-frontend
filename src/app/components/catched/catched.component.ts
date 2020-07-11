@@ -11,7 +11,9 @@ export class CatchedComponent implements OnInit {
   public receivedData = [];
   constructor(private signalrService: SignalRService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.initializeConnection();
+  }
 
   async initializeConnection() {
     this.signalrService.createConnection();
