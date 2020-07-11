@@ -8,10 +8,9 @@ import {
 } from '@angular/core';
 
 import * as cocoSsd from '@tensorflow-models/coco-ssd';
-//import '@tensorflow/tfjs-backend-webgl';
-//import '@tensorflow/tfjs-backend-cpu';
 import '@tensorflow/tfjs';
-import { Observable, interval, Subscription } from 'rxjs';
+import { interval, Subscription } from 'rxjs';
+import { RecordService } from '../../services/recorder.service';
 
 @Component({
   selector: 'app-recorder',
@@ -25,8 +24,12 @@ export class RecorderComponent implements OnInit, OnDestroy {
   public model = {};
   captures = [];
   timeInterval: Subscription;
+  private busy = false;
 
-  constructor(private renderer: Renderer2) {}
+  constructor(
+    private renderer: Renderer2,
+    private recordServide: RecordService
+  ) {}
   ngOnInit(): void {}
 
   public ngAfterViewInit() {
@@ -37,25 +40,29 @@ export class RecorderComponent implements OnInit, OnDestroy {
       });
     }
     this.renderer.listen(this.video.nativeElement, 'play', (event) => {
-      console.log('***** video started******', event);
       this.loadModel();
     });
   }
 
   capture() {
     this.timeInterval = interval(1000).subscribe(async () => {
-      const predictions = await this.model['current'].detect(
-        this.video.nativeElement
-      );
-      predictions.forEach((p) => {
-        if (p.class === 'person' && p.score >= 0.8) {
-          var context = this.canvas.nativeElement
-            .getContext('2d')
-            .drawImage(this.video.nativeElement, 0, 0, 640, 480);
-          this.captures.push(this.canvas.nativeElement.toDataURL('image/png'));
-          console.log('--------', predictions);
-        }
-      });
+      if (!this.busy) {
+        const predictions = await this.model['current'].detect(
+          this.video.nativeElement
+        );
+        predictions.forEach((p) => {
+          if (p.class === 'person' && p.score >= 0.8) {
+            var context = this.canvas.nativeElement
+              .getContext('2d')
+              .drawImage(this.video.nativeElement, 0, 0, 640, 480);
+            this.captures.push(
+              this.canvas.nativeElement.toDataURL('image/png')
+            );
+            this.sendImageToBackend(this.captures[this.captures.length - 1]);
+            console.log('--------', predictions);
+          }
+        });
+      }
     });
   }
 
@@ -70,6 +77,14 @@ export class RecorderComponent implements OnInit, OnDestroy {
     if (this.timeInterval) {
       this.timeInterval.unsubscribe();
     }
+  }
+
+  sendImageToBackend(image) {
+    console.log('sending image to back...........', image);
+    this.busy = true;
+    this.recordServide.sendImageToBacked(image).subscribe((res) => {
+      this.busy = false;
+    });
   }
 
   ngOnDestroy(): void {
