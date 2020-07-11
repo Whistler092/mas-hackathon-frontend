@@ -1,5 +1,20 @@
-<video id="video" #video width="720" height="560" autoplay muted></video>
-<canvas #canvas id="canvas" width="640" height="480"></canvas>
-<button (click)="stop()">Stop</button>
-<button (click)="restart()">Restart</button>
-<button (click)="takePicture()">Photo</button>
+<div class="row">
+  <img src="../assets/images/banner.png" />
+</div>
+<div class="row">
+  <div class="col-md-10 mx-auto">
+    <video id="video" #video width="720" height="560" autoplay muted></video>
+    <canvas #canvas id="canvas" width="640" height="480"></canvas>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-10 mx-auto buttons">
+    <button class="btn mr-4 btn-danger" (click)="stop()">Stop</button>
+    <button class="btn mr-4 btn-primary color-bg" (click)="restart()">
+      Restart
+    </button>
+    <button class="btn mr-4 btn-secondary" (click)="takePicture()">
+      Photo
+    </button>
+  </div>
+</div>

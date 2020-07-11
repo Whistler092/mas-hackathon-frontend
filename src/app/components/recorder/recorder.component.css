@@ -4,3 +4,13 @@ canvas {
   top: 0;
   left: 0;
 }
+img {
+  width: 100%;
+}
+video {
+  margin: 0 auto;
+  display: block;
+}
+.buttons {
+  text-align: center;
+}
