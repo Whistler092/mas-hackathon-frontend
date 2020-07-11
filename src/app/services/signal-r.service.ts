@@ -10,7 +10,7 @@ export class SignalRService {
 
   public startConnection() {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('http://64.225.8.39/mainHub')
+      .withUrl('https://middleware-mask-api.azurewebsites.net/mainHub')
       .build();
     this.hubConnection
       .start()
